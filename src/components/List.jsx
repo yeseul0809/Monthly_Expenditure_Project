@@ -123,5 +123,10 @@ const StDataGroup = styled.div`
     font-weight: bold;
     color: #9982e9;
     flex-shrink: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 `;

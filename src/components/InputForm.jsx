@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 
 const InputForm = ({ data, setData }) => {
   const [date, setDate] = useState("2024-05-23"); // 날짜
@@ -10,6 +11,16 @@ const InputForm = ({ data, setData }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+
+    if (!date || !price) {
+      Swal.fire({
+        title: "다시 입력해주세요.",
+        text: "날짜와 금액 모두 입력해야합니다.",
+        icon: "warning",
+        confirmButtonText: "확인",
+      });
+      return;
+    }
 
     const newList = {
       id: uuidv4(),

@@ -10,9 +10,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 2rem;
     text-align: center;
     }
-
-    .body {
-        display: block;
+    .swal2-icon {
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto;
     }
    
 `;
