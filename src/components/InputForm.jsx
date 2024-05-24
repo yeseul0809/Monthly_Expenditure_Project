@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-const InputForm = () => {
+const InputForm = ({ data, setData }) => {
   const [date, setDate] = useState("2024-05-23"); // 날짜
   const [category, setCategory] = useState(""); // 지출항목
   const [price, setPrice] = useState(""); // 지출금액
@@ -15,9 +15,16 @@ const InputForm = () => {
       id: uuidv4(),
       date,
       category,
-      price,
+      price: Number(price),
       description,
     };
+
+    // 로컬 스토리지에 새롭게 추가되는 지출내역 저장하기
+    setData((prevData) => {
+      const updatedData = [...prevData, newList];
+      localStorage.setItem("storedData", JSON.stringify(updatedData));
+      return updatedData;
+    });
 
     setDate("2024-05-23");
     setCategory("");
@@ -74,8 +81,6 @@ const InputForm = () => {
 
 export default InputForm;
 
-//*styled-components
-
 const StInputFrom = styled.form`
   display: flex;
   flex-wrap: wrap;
@@ -110,5 +115,3 @@ const StInputButton = styled.button`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out 0s;
 `;
-
-//*styled-components

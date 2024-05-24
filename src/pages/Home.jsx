@@ -1,8 +1,35 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
+
+const Home = () => {
+  const [activeIndex, setActiveIndex] = useState("");
+  const [data, setData] = useState([]);
+
+  return (
+    <>
+      <StMain>
+        <StHomeSection>
+          <InputForm data={data} setData={setData} />
+        </StHomeSection>
+        <StHomeSection>
+          <MonthButton
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        </StHomeSection>
+        <StHomeSection>
+          <List activeIndex={activeIndex} data={data} setData={setData} />
+        </StHomeSection>
+      </StMain>
+    </>
+  );
+};
+
+export default Home;
 
 const StMain = styled.main`
   max-width: 800px;
@@ -17,23 +44,3 @@ const StHomeSection = styled.section`
   padding: 20px;
   background-color: lightblue;
 `;
-
-const Home = () => {
-  return (
-    <>
-      <StMain>
-        <StHomeSection>
-          <InputForm />
-        </StHomeSection>
-        <StHomeSection>
-          <MonthButton />
-        </StHomeSection>
-        <StHomeSection>
-          <List />
-        </StHomeSection>
-      </StMain>
-    </>
-  );
-};
-
-export default Home;

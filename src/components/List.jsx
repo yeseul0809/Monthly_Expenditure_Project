@@ -3,57 +3,66 @@ import { stringify, v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const List = () => {
-  const navigate = useNavigate();
-  const [data, setData] = useState([]);
+const dummyData = [
+  {
+    id: uuidv4(),
+    date: "2024-01-05",
+    category: "식비",
+    price: 100000,
+    description: "세광양대창",
+  },
+  {
+    id: uuidv4(),
+    date: "2024-01-10",
+    category: "도서",
+    price: 40500,
+    description: "모던 자바스크립트",
+  },
+  {
+    id: uuidv4(),
+    date: "2024-02-02",
+    category: "미용",
+    price: 155000,
+    description: "미용실",
+  },
+  {
+    id: uuidv4(),
+    date: "2024-02-02",
+    category: "도서",
+    price: 75000,
+    description:
+      "자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발",
+  },
+];
 
-  // List 컴포넌트 마운팅될때 로컬스토리지 데이터 확인
-  // 저장된 값이 없다면 더미데이터 추가
-  // 컴포넌트에서 상태관리할 setData도 함께 적용
+const List = ({ activeIndex, data, setData }) => {
+  const navigate = useNavigate();
+
+  // 클릭한 월 에 맞는 데이터 필터링
+  const filterDataByMonth = (data, activeIndex) => {
+    const currentMonth = new Date().getMonth() + 1; // Date 객체는 월을 나타내는 값이 0부터 시작. -> 1 더해줘야한다.
+    return data.filter(
+      (item) =>
+        new Date(item.date).getMonth() + 1 === (activeIndex || currentMonth)
+    );
+  };
+  const filteredData = filterDataByMonth(data, activeIndex);
+
+  // 로컬 스토리지에서 데이터 가져오기
   useEffect(() => {
-    const storedData = localStorage.getItem("localData");
+    const storedData = JSON.parse(localStorage.getItem("storedData"));
     if (storedData) {
-      setData(JSON.parse(storedData));
+      setData(storedData);
     } else {
-      const dummyData = [
-        {
-          id: uuidv4(),
-          date: "2024-01-05",
-          category: "식비",
-          price: 100000,
-          description: "세광양대창",
-        },
-        {
-          id: uuidv4(),
-          date: "2024-01-10",
-          category: "도서",
-          price: 40500,
-          description: "모던 자바스크립트",
-        },
-        {
-          id: uuidv4(),
-          date: "2024-02-02",
-          category: "미용",
-          price: 155000,
-          description: "미용실",
-        },
-        {
-          id: uuidv4(),
-          date: "2024-02-02",
-          category: "도서",
-          price: 75000,
-          description:
-            "자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발",
-        },
-      ];
+      // 로컬 스토리지에 데이터가 없을 경우 더미데이터로 초기화
+      localStorage.setItem("storedData", JSON.stringify(dummyData));
       setData(dummyData);
-      localStorage.setItem("localData", JSON.stringify(dummyData));
     }
   }, []);
 
   return (
     <StList>
-      {data.map((data) => (
+      {filteredData.map((data) => (
         <StDataWrap
           key={data.id}
           onClick={() => {

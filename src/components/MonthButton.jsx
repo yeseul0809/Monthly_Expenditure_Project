@@ -1,28 +1,38 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
-const MonthButton = () => {
-  const [activeIndex, setActiveIndex] = useState("");
-
+const MonthButton = ({ activeIndex, setActiveIndex }) => {
   const clickHandler = (index) => {
     setActiveIndex(index);
   };
 
-  // 12월까지의 배열생성
-  const months = [];
-  for (let i = 1; i <= 12; i++) {
-    months.push(i);
-  }
+  // 월 정보를 객체 형태로 저장
+  const months = [
+    { index: 1, name: "1월" },
+    { index: 2, name: "2월" },
+    { index: 3, name: "3월" },
+    { index: 4, name: "4월" },
+    { index: 5, name: "5월" },
+    { index: 6, name: "6월" },
+    { index: 7, name: "7월" },
+    { index: 8, name: "8월" },
+    { index: 9, name: "9월" },
+    { index: 10, name: "10월" },
+    { index: 11, name: "11월" },
+    { index: 12, name: "12월" },
+  ];
 
   return (
     <StButtonGroup>
       {months.map((month, index) => (
         <StButton
           key={index}
-          $active={activeIndex === index}
-          onClick={() => clickHandler(index)}
-        >{`${month}월`}</StButton>
+          $active={activeIndex === month.index}
+          onClick={() => clickHandler(month.index)}
+        >
+          {month.name}
+        </StButton>
       ))}
     </StButtonGroup>
   );
