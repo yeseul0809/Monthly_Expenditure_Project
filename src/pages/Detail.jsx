@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Detail = ({ setDate, setCategory, setPrice, setDescription }) => {
+const Detail = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -71,7 +71,7 @@ const Detail = ({ setDate, setCategory, setPrice, setDescription }) => {
             type="date"
             id="date"
             ref={dateRef}
-            onChange={(e) => setDate(e.target.value)}
+            // onChange={(e) => setDate(e.target.value)}
             placeholder="YYYY-MM-DD"
           />
         </StDetailGroup>
@@ -81,7 +81,7 @@ const Detail = ({ setDate, setCategory, setPrice, setDescription }) => {
             type="text"
             id="category"
             ref={categoryRef}
-            onChange={(e) => setCategory(e.target.value)}
+            // onChange={(e) => setCategory(e.target.value)}
             placeholder="지출항목"
           />
         </StDetailGroup>
@@ -91,7 +91,7 @@ const Detail = ({ setDate, setCategory, setPrice, setDescription }) => {
             type="number"
             id="price"
             ref={priceRef}
-            onChange={(e) => setPrice(e.target.value)}
+            // onChange={(e) => setPrice(e.target.value)}
             placeholder="지출금액"
           />
         </StDetailGroup>
@@ -101,7 +101,7 @@ const Detail = ({ setDate, setCategory, setPrice, setDescription }) => {
             type="text"
             id="description"
             ref={descriptionRef}
-            onChange={(e) => setDescription(e.target.value)}
+            // onChange={(e) => setDescription(e.target.value)}
             placeholder="지출내용"
           />
         </StDetailGroup>

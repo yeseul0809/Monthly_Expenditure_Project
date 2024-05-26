@@ -5,16 +5,7 @@ import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
 
-const Home = ({
-  date,
-  price,
-  category,
-  description,
-  setDate,
-  setCategory,
-  setPrice,
-  setDescription,
-}) => {
+const Home = () => {
   const [activeIndex, setActiveIndex] = useState("");
   const [data, setData] = useState([]);
 
@@ -23,17 +14,7 @@ const Home = ({
       <h1>가계부</h1>
       <StMain>
         <StHomeSection>
-          <InputForm
-            date={date}
-            setDate={setDate}
-            category={category}
-            setCategory={setCategory}
-            price={price}
-            setPrice={setPrice}
-            description={description}
-            setDescription={setDescription}
-            setData={setData}
-          />
+          <InputForm setData={setData} />
         </StHomeSection>
         <StHomeSection>
           <MonthButton
