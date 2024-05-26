@@ -5,15 +5,35 @@ import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
 
-const Home = () => {
+const Home = ({
+  date,
+  price,
+  category,
+  description,
+  setDate,
+  setCategory,
+  setPrice,
+  setDescription,
+}) => {
   const [activeIndex, setActiveIndex] = useState("");
   const [data, setData] = useState([]);
 
   return (
     <>
+      <h1>가계부</h1>
       <StMain>
         <StHomeSection>
-          <InputForm data={data} setData={setData} />
+          <InputForm
+            date={date}
+            setDate={setDate}
+            category={category}
+            setCategory={setCategory}
+            price={price}
+            setPrice={setPrice}
+            description={description}
+            setDescription={setDescription}
+            setData={setData}
+          />
         </StHomeSection>
         <StHomeSection>
           <MonthButton
@@ -42,5 +62,5 @@ const StMain = styled.main`
 const StHomeSection = styled.section`
   border-radius: 16px;
   padding: 20px;
-  background-color: lightblue;
+  background-color: rgb(106 185 172 / 53%);
 `;

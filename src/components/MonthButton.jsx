@@ -57,9 +57,11 @@ const StButton = styled.button`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  color: var(--black-alpha-100, #000);
+  /* color: var(--black-alpha-100, #000); */
+  font-family: "Gowun Dodum", sans-serif;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  background-color: ${(props) => (props.$active ? "#b9aee2" : "white")};
+  background-color: ${(props) => (props.$active ? "#e98282" : "white")};
+  color: ${(props) => (props.$active ? "white" : "black")};
 `;

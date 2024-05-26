@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 
-const InputForm = ({ data, setData }) => {
-  const [date, setDate] = useState("2024-05-23"); // 날짜
-  const [category, setCategory] = useState(""); // 지출항목
-  const [price, setPrice] = useState(""); // 지출금액
-  const [description, setDescription] = useState(""); // 지출내용
-
+const InputForm = ({
+  date,
+  price,
+  category,
+  description,
+  setDate,
+  setCategory,
+  setPrice,
+  setDescription,
+  setData,
+}) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -33,7 +37,7 @@ const InputForm = ({ data, setData }) => {
     // 로컬 스토리지에 새롭게 추가되는 지출내역 저장하기
     setData((prevData) => {
       const updatedData = [...prevData, newList];
-      localStorage.setItem("storedData", JSON.stringify(updatedData));
+      localStorage.setItem("localData", JSON.stringify(updatedData));
       return updatedData;
     });
 
@@ -112,16 +116,18 @@ const StInput = styled.input`
   border: 1px solid rgb(221, 221, 221);
   border-radius: 4px;
   font-size: 14px;
+  font-family: "Gowun Dodum", sans-serif;
 `;
 
 const StInputButton = styled.button`
   padding: 8px 20px;
   height: 34px;
   margin-top: 10px;
-  background-color: #9982e9;
+  background-color: #e98282;
   color: white;
   border: none;
   border-radius: 4px;
+  font-family: "Gowun Dodum", sans-serif;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out 0s;

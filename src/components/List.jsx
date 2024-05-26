@@ -50,12 +50,12 @@ const List = ({ activeIndex, data, setData }) => {
 
   // 로컬 스토리지에서 데이터 가져오기
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("storedData"));
+    const storedData = JSON.parse(localStorage.getItem("localData"));
     if (storedData) {
       setData(storedData);
     } else {
       // 로컬 스토리지에 데이터가 없을 경우 더미데이터로 초기화
-      localStorage.setItem("storedData", JSON.stringify(dummyData));
+      localStorage.setItem("localData", JSON.stringify(dummyData));
       setData(dummyData);
     }
   }, []);
@@ -75,7 +75,7 @@ const List = ({ activeIndex, data, setData }) => {
               {data.category} - {data.description}
             </span>
           </StDataGroup>
-          <span>{data.price} 원</span>
+          <StPrice>{data.price} 원</StPrice>
         </StDataWrap>
       ))}
     </StList>
@@ -101,6 +101,10 @@ const StDataWrap = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
   transition: transform 0.2s ease-in-out 0s;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 // 날짜, 카테고리, 설명 묶음
@@ -121,7 +125,7 @@ const StDataGroup = styled.div`
 
   & > span:last-child {
     font-weight: bold;
-    color: #9982e9;
+    color: #e98282;
     flex-shrink: 0;
 
     white-space: nowrap;
@@ -129,4 +133,9 @@ const StDataGroup = styled.div`
     text-overflow: ellipsis;
     max-width: 100%;
   }
+`;
+
+const StPrice = styled.span`
+  flex-shrink: 0;
+  font-weight: 500;
 `;
