@@ -71,7 +71,6 @@ const Detail = () => {
             type="date"
             id="date"
             ref={dateRef}
-            // onChange={(e) => setDate(e.target.value)}
             placeholder="YYYY-MM-DD"
           />
         </StDetailGroup>
@@ -81,7 +80,6 @@ const Detail = () => {
             type="text"
             id="category"
             ref={categoryRef}
-            // onChange={(e) => setCategory(e.target.value)}
             placeholder="지출항목"
           />
         </StDetailGroup>
@@ -91,7 +89,6 @@ const Detail = () => {
             type="number"
             id="price"
             ref={priceRef}
-            // onChange={(e) => setPrice(e.target.value)}
             placeholder="지출금액"
           />
         </StDetailGroup>
@@ -101,7 +98,6 @@ const Detail = () => {
             type="text"
             id="description"
             ref={descriptionRef}
-            // onChange={(e) => setDescription(e.target.value)}
             placeholder="지출내용"
           />
         </StDetailGroup>

@@ -1,32 +1,26 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
+import { DataProvider } from "../context/DataContext";
 
 const Home = () => {
-  const [activeIndex, setActiveIndex] = useState("");
-  const [data, setData] = useState([]);
-
   return (
-    <>
+    <DataProvider>
       <h1>가계부</h1>
       <StMain>
         <StHomeSection>
-          <InputForm setData={setData} />
+          <InputForm />
         </StHomeSection>
         <StHomeSection>
-          <MonthButton
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-          />
+          <MonthButton />
         </StHomeSection>
         <StHomeSection>
-          <List activeIndex={activeIndex} data={data} setData={setData} />
+          <List />
         </StHomeSection>
       </StMain>
-    </>
+    </DataProvider>
   );
 };
 

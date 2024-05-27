@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { useState } from "react";
+import { DataContext } from "../context/DataContext";
 
-const MonthButton = ({ activeIndex, setActiveIndex }) => {
+const MonthButton = () => {
+  const { activeIndex, setActiveIndex } = useContext(DataContext);
+
   const clickHandler = (index) => {
     setActiveIndex(index);
   };

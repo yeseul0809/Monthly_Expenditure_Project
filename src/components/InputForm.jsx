@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
-const InputForm = ({ setData }) => {
+const InputForm = () => {
+  const { setData } = useContext(DataContext);
   const [date, setDate] = useState("2024-05-23"); // 날짜
   const [category, setCategory] = useState(""); // 지출항목
   const [price, setPrice] = useState(""); // 지출금액

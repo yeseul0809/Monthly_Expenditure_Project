@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { stringify, v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
 
 const dummyData = [
   {
@@ -35,7 +36,8 @@ const dummyData = [
   },
 ];
 
-const List = ({ activeIndex, data, setData }) => {
+const List = () => {
+  const { activeIndex, data, setData } = useContext(DataContext);
   const navigate = useNavigate();
 
   // 클릭한 월 에 맞는 데이터 필터링
