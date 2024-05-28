@@ -3,11 +3,12 @@ import styled from "styled-components";
 import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
-import { DataProvider } from "../context/DataContext";
+import store from "../redux/config/configStore";
+import { Provider } from "react-redux";
 
 const Home = () => {
   return (
-    <DataProvider>
+    <Provider store={store}>
       <h1>가계부</h1>
       <StMain>
         <StHomeSection>
@@ -20,7 +21,7 @@ const Home = () => {
           <List />
         </StHomeSection>
       </StMain>
-    </DataProvider>
+    </Provider>
   );
 };
 

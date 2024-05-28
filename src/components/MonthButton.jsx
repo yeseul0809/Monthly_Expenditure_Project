@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
-import { DataContext } from "../context/DataContext";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveIndex } from "../redux/slices/DataSlice";
 
 const MonthButton = () => {
-  const { activeIndex, setActiveIndex } = useContext(DataContext);
+  const dispatch = useDispatch();
+  const { activeIndex } = useSelector((state) => state.data);
 
   const clickHandler = (index) => {
-    setActiveIndex(index);
+    dispatch(setActiveIndex(index));
   };
 
   // 월 정보를 객체 형태로 저장

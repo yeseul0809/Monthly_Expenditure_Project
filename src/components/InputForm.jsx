@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
-import { useState, useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setData } from "../redux/slices/DataSlice";
 
 const InputForm = () => {
-  const { setData } = useContext(DataContext);
-  const [date, setDate] = useState("2024-05-23"); // 날짜
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.data.data);
+  const [date, setDate] = useState("2024-05-28"); // 날짜
   const [category, setCategory] = useState(""); // 지출항목
   const [price, setPrice] = useState(""); // 지출금액
   const [description, setDescription] = useState(""); // 지출내용
@@ -32,12 +34,7 @@ const InputForm = () => {
       description,
     };
 
-    // 로컬 스토리지에 새롭게 추가되는 지출내역 저장하기
-    setData((prevData) => {
-      const updatedData = [...prevData, newList];
-      localStorage.setItem("localData", JSON.stringify(updatedData));
-      return updatedData;
-    });
+    dispatch(setData([...data, newList]));
 
     setDate("2024-05-23");
     setCategory("");

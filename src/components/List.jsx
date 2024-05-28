@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { stringify, v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { DataContext } from "../context/DataContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setData } from "../redux/slices/DataSlice";
 
 const dummyData = [
   {
@@ -37,7 +38,8 @@ const dummyData = [
 ];
 
 const List = () => {
-  const { activeIndex, data, setData } = useContext(DataContext);
+  const { activeIndex, data } = useSelector((state) => state.data);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // 클릭한 월 에 맞는 데이터 필터링
@@ -54,13 +56,13 @@ const List = () => {
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("localData"));
     if (storedData) {
-      setData(storedData);
+      dispatch(setData(storedData));
     } else {
       // 로컬 스토리지에 데이터가 없을 경우 더미데이터로 초기화
       localStorage.setItem("localData", JSON.stringify(dummyData));
-      setData(dummyData);
+      dispatch(setData(dummyData));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <StList>
