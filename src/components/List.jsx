@@ -4,38 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../redux/slices/DataSlice";
-
-const dummyData = [
-  {
-    id: uuidv4(),
-    date: "2024-01-05",
-    category: "식비",
-    price: 100000,
-    description: "세광양대창",
-  },
-  {
-    id: uuidv4(),
-    date: "2024-01-10",
-    category: "도서",
-    price: 40500,
-    description: "모던 자바스크립트",
-  },
-  {
-    id: uuidv4(),
-    date: "2024-02-02",
-    category: "미용",
-    price: 155000,
-    description: "미용실",
-  },
-  {
-    id: uuidv4(),
-    date: "2024-02-02",
-    category: "도서",
-    price: 75000,
-    description:
-      "자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발",
-  },
-];
+import dummyData from "../dummyData.json";
 
 const List = () => {
   const { activeIndex, data } = useSelector((state) => state.data);
