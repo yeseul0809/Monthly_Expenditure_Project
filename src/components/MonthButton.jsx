@@ -12,18 +12,18 @@ const MonthButton = () => {
 
   // 월 정보를 객체 형태로 저장
   const months = [
-    { index: 1, name: "1월" },
-    { index: 2, name: "2월" },
-    { index: 3, name: "3월" },
-    { index: 4, name: "4월" },
-    { index: 5, name: "5월" },
-    { index: 6, name: "6월" },
-    { index: 7, name: "7월" },
-    { index: 8, name: "8월" },
-    { index: 9, name: "9월" },
-    { index: 10, name: "10월" },
-    { index: 11, name: "11월" },
-    { index: 12, name: "12월" },
+    { index: 1, name: "January" },
+    { index: 2, name: "February" },
+    { index: 3, name: "March" },
+    { index: 4, name: "April" },
+    { index: 5, name: "May" },
+    { index: 6, name: "Jun" },
+    { index: 7, name: "July" },
+    { index: 8, name: "August" },
+    { index: 9, name: "September" },
+    { index: 10, name: "October" },
+    { index: 11, name: "November" },
+    { index: 12, name: "December" },
   ];
 
   return (
@@ -59,12 +59,19 @@ const StButton = styled.button`
   width: 104px;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
+  font-weight: 550;
   flex-shrink: 0;
-  /* color: var(--black-alpha-100, #000); */
+  color: rgb(102, 102, 102);
   font-family: "Gowun Dodum", sans-serif;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   background-color: ${(props) => (props.$active ? "#e98282" : "white")};
   color: ${(props) => (props.$active ? "white" : "black")};
+
+  &:hover {
+    background-color: #e98282;
+    color: white;
+  }
 `;

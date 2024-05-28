@@ -3,13 +3,13 @@ import styled from "styled-components";
 import InputForm from "../components/InputForm";
 import MonthButton from "../components/MonthButton";
 import List from "../components/List";
-import store from "../redux/config/configStore";
-import { Provider } from "react-redux";
+import PieChart from "../components/PieChart";
+import Header from "../components/Header";
 
 const Home = () => {
   return (
-    <Provider store={store}>
-      <h1>가계부</h1>
+    <>
+      <Header title="MONEY RECORD" />
       <StMain>
         <StHomeSection>
           <InputForm />
@@ -17,11 +17,14 @@ const Home = () => {
         <StHomeSection>
           <MonthButton />
         </StHomeSection>
+        <StPieChartSection>
+          <PieChart />
+        </StPieChartSection>
         <StHomeSection>
           <List />
         </StHomeSection>
       </StMain>
-    </Provider>
+    </>
   );
 };
 
@@ -39,4 +42,10 @@ const StHomeSection = styled.section`
   border-radius: 16px;
   padding: 20px;
   background-color: rgb(106 185 172 / 53%);
+`;
+
+const StPieChartSection = styled.section`
+  height: 350px;
+  background-color: white;
+  cursor: pointer;
 `;

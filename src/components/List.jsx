@@ -109,6 +109,7 @@ const StDataGroup = styled.div`
 `;
 
 const StPrice = styled.span`
+  color: rgb(102, 102, 102);
   flex-shrink: 0;
-  font-weight: 500;
+  font-weight: 600;
 `;

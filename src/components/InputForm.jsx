@@ -45,7 +45,7 @@ const InputForm = () => {
   return (
     <StInputFrom onSubmit={onSubmitHandler}>
       <StFromGroup>
-        <label htmlFor="date">날짜</label>
+        <label htmlFor="date">Date</label>
         <StInput
           type="date"
           id="date"
@@ -55,7 +55,7 @@ const InputForm = () => {
         />
       </StFromGroup>
       <StFromGroup>
-        <label htmlFor="category">항목</label>
+        <label htmlFor="category">Category</label>
         <StInput
           type="text"
           id="category"
@@ -65,7 +65,7 @@ const InputForm = () => {
         />
       </StFromGroup>
       <StFromGroup>
-        <label htmlFor="price">금액</label>
+        <label htmlFor="price">Price</label>
         <StInput
           type="number"
           id="price"
@@ -75,7 +75,7 @@ const InputForm = () => {
         />
       </StFromGroup>
       <StFromGroup>
-        <label htmlFor="description">내용</label>
+        <label htmlFor="description">Description</label>
         <StInput
           type="text"
           id="description"
@@ -84,7 +84,7 @@ const InputForm = () => {
           placeholder="지출내용"
         />
       </StFromGroup>
-      <StInputButton>저장</StInputButton>
+      <StInputButton>Save</StInputButton>
     </StInputFrom>
   );
 };
@@ -109,6 +109,7 @@ const StFromGroup = styled.div`
 const StInput = styled.input`
   padding: 8px;
   border: 1px solid rgb(221, 221, 221);
+  margin-top: 3px;
   border-radius: 4px;
   font-size: 14px;
   font-family: "Gowun Dodum", sans-serif;
@@ -116,14 +117,18 @@ const StInput = styled.input`
 
 const StInputButton = styled.button`
   padding: 8px 20px;
-  height: 34px;
+  height: 38px;
   margin-top: 10px;
   background-color: #e98282;
   color: white;
   border: none;
   border-radius: 4px;
   font-family: "Gowun Dodum", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out 0s;
+
+  &:hover {
+    background-color: #efaed0;
+  }
 `;

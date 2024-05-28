@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Header from "../components/Header";
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -63,10 +64,10 @@ const Detail = () => {
 
   return (
     <>
-      <h1>지출 내역 수정</h1>
+      <Header title="Modify expenditure" />
       <StDetailWrap>
         <StDetailGroup>
-          <label htmlFor="date">날짜</label>
+          <label htmlFor="date">Date</label>
           <StDetailInput
             type="date"
             id="date"
@@ -75,7 +76,7 @@ const Detail = () => {
           />
         </StDetailGroup>
         <StDetailGroup>
-          <label htmlFor="category">항목</label>
+          <label htmlFor="category">Category</label>
           <StDetailInput
             type="text"
             id="category"
@@ -84,7 +85,7 @@ const Detail = () => {
           />
         </StDetailGroup>
         <StDetailGroup>
-          <label htmlFor="price">금액</label>
+          <label htmlFor="price">Price</label>
           <StDetailInput
             type="number"
             id="price"
@@ -93,7 +94,7 @@ const Detail = () => {
           />
         </StDetailGroup>
         <StDetailGroup>
-          <label htmlFor="description">내용</label>
+          <label htmlFor="description">Description</label>
           <StDetailInput
             type="text"
             id="description"
@@ -102,9 +103,9 @@ const Detail = () => {
           />
         </StDetailGroup>
         <StButtonWrap>
-          <StDetailButton onClick={modifyHandler}>수정</StDetailButton>
+          <StDetailButton onClick={modifyHandler}>Modify</StDetailButton>
           <StDetailButton $backgroundColor="#e98282" onClick={deleteHandler}>
-            삭제
+            Delete
           </StDetailButton>
           <StDetailButton
             $backgroundColor="#4c9b6ee6"
@@ -112,7 +113,7 @@ const Detail = () => {
               navigate(`/`);
             }}
           >
-            뒤로가기
+            Back
           </StDetailButton>
         </StButtonWrap>
       </StDetailWrap>
@@ -147,13 +148,14 @@ const StDetailInput = styled.input`
   padding: 10px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Gowun Dodum", sans-serif;
 `;
 
 const StButtonWrap = styled.div`
   display: flex;
   gap: 10px;
+  padding-top: 8px;
 `;
 
 const StDetailButton = styled.button`
@@ -161,8 +163,9 @@ const StDetailButton = styled.button`
   color: white;
   border: none;
   border-radius: 4px;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out 0s;
   font-family: "Gowun Dodum", sans-serif;
-  background-color: ${(props) => props.$backgroundColor || "rgb(111 164 39)"};
+  background-color: ${(props) => props.$backgroundColor || "#b85b8b"};
 `;
