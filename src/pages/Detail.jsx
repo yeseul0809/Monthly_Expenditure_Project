@@ -4,9 +4,12 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { modifyData, deleteData } from "../redux/slices/DataSlice";
 
 const Detail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { id } = useParams();
   const dateRef = useRef("");
@@ -15,24 +18,18 @@ const Detail = () => {
   const descriptionRef = useRef("");
 
   const modifyHandler = (e) => {
-    const detailStoredData = JSON.parse(localStorage.getItem("localData"));
-    const modifyData = {
-      id,
+    const modifiedData = {
+      id: id,
       date: dateRef.current.value,
       category: categoryRef.current.value,
       price: priceRef.current.value,
       description: descriptionRef.current.value,
     };
 
-    // 기존 데이터에서 현재 id와 일치하는 데이터를 찾아 수정.
-    const updatedData = detailStoredData.map((item) =>
-      item.id === id ? modifyData : item
-    );
-    localStorage.setItem("localData", JSON.stringify(updatedData));
-    navigate(`/`); // 홈으로 이동
+    dispatch(modifyData(modifiedData));
+    navigate(`/`);
   };
 
-  // 기존 데이터에서 현재 id와 일치하는 데이터를 찾아 삭제.
   const deleteHandler = (e) => {
     Swal.fire({
       title: "정말 이 지출내역을 삭제하시겠습니까?",
@@ -43,9 +40,7 @@ const Detail = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        const detailStoredData = JSON.parse(localStorage.getItem("localData"));
-        const deletedData = detailStoredData.filter((item) => item.id !== id);
-        localStorage.setItem("localData", JSON.stringify(deletedData));
+        dispatch(deleteData(id));
         navigate(`/`);
       }
     });
