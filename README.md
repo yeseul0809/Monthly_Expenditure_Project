@@ -33,6 +33,8 @@
 - context: props-drilling으로 작업한 코드에서 react context API를 사용하여 전역상태를 이용한 코드로 리팩터링 했습니다.
 - redux: Redux Toolkit을 사용하여 context api로 전역상태를 관리한 코드를 모두 redux 라이브러리를 이용한 코드로 리팩터링 했습니다.
 
+<br>
+
 ## 🗂️ 폴더구조
 
 - ### 📂Redux
@@ -138,7 +140,7 @@
 
 <br>
 
-### 🗄️파일설명
+## 🗄️파일설명
 
 ## Redux 브랜치를 기준으로 작성하였습니다.
 
